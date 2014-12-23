@@ -65,8 +65,6 @@ static NSArray *allowedSelectorNamesForJavaScript;
 - (void) awakeFromNib {
     [self addSubview:webView];
     [self setBorderType:NSBezelBorder];
-
-    [self resizeWebView];
     
     textFinder = [[NSTextFinder alloc] init];
     [textFinder setClient:self];
@@ -82,6 +80,12 @@ static NSArray *allowedSelectorNamesForJavaScript;
     html = [html stringByReplacingOccurrencesOfString:ACE_JAVASCRIPT_DIRECTORY withString:javascriptDirectory];
     
     [[webView mainFrame] loadHTMLString:html baseURL:[bundle bundleURL]];
+}
+
+- (void) setBorderType:(NSBorderType)borderType {
+    [super setBorderType:borderType];
+    padding = (borderType == NSNoBorder) ? 0 : 1;
+    [self resizeWebView];
 }
 
 - (NSString *) aceJavascriptDirectoryPath{
@@ -172,8 +176,8 @@ static NSArray *allowedSelectorNamesForJavaScript;
         bounds.size.height -= findBarHeight;
     }
     
-    [webView setFrame:NSMakeRect(bounds.origin.x + 1, bounds.origin.y + 1,
-                                 bounds.size.width - 2, bounds.size.height - 2)];
+    [webView setFrame:NSMakeRect(bounds.origin.x + padding, bounds.origin.y + padding,
+                                 bounds.size.width - (2 * padding), bounds.size.height - (2 * padding))];
 }
 
 - (void) showFindInterface {
