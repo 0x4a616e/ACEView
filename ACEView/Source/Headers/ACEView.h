@@ -62,7 +62,9 @@ extern NSString *const ACETextDidEndEditingNotification;
  *  ---------------------------------------------------------------------------------------
  */
 
-- (NSArray *) token;
+- (NSArray *) token:(NSUInteger) row;
+
+- (NSUInteger) getLength;
 
 /** Retrieve the content of the underlying ACE Editor.
 

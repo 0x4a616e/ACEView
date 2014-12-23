@@ -229,8 +229,12 @@ static NSArray *allowedSelectorNamesForJavaScript;
     ]];
 }
 
-- (NSArray *) token {
-    return [ACEToken fromString:[self stringByEvaluatingJavaScriptOnMainThreadFromString:@"JSON.stringify(editor.session.getTokens(0));"]];
+- (NSArray *) token:(NSUInteger)row {
+    return [ACEToken fromString:[self stringByEvaluatingJavaScriptOnMainThreadFromString:[NSString stringWithFormat:@"JSON.stringify(editor.session.getTokens(%ld));", row]]];
+}
+
+- (NSUInteger) getLength {
+    return [self stringByEvaluatingJavaScriptOnMainThreadFromString:@"editor.session.getLength() + \"\""].integerValue;
 }
 
 - (void) setMode:(ACEMode)mode {
