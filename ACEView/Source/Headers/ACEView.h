@@ -62,6 +62,8 @@ extern NSString *const ACETextDidEndEditingNotification;
  *  ---------------------------------------------------------------------------------------
  */
 
+- (NSArray *) token;
+
 /** Retrieve the content of the underlying ACE Editor.
 
  Uses [editor.getValue()](http://ace.ajax.org/#Editor.getValue).

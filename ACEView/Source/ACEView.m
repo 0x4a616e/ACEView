@@ -12,6 +12,7 @@
 #import <ACEView/ACEKeyboardHandlerNames.h>
 #import <ACEView/ACERange.h>
 #import <ACEView/ACEStringFromBool.h>
+#import <ACEView/ACEToken.h>
 
 #import <ACEView/NSString+EscapeForJavaScript.h>
 #import <ACEView/NSInvocation+MainThread.h>
@@ -226,6 +227,10 @@ static NSArray *allowedSelectorNamesForJavaScript;
         @"reportChanges = true;",
         @"ACEView.aceTextDidChange();"
     ]];
+}
+
+- (NSArray *) token {
+    return [ACEToken fromString:[self stringByEvaluatingJavaScriptOnMainThreadFromString:@"JSON.stringify(editor.session.getTokens(0));"]];
 }
 
 - (void) setMode:(ACEMode)mode {
