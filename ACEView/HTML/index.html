@@ -20,6 +20,8 @@
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/keybinding-vim.js" type="text/javascript" charset="utf-8"></script>
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/keybinding-emacs.js" type="text/javascript" charset="utf-8"></script>
+        <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+
         <script>
             var editor = ace.edit("editor");
             editor.commands.addCommands([{
@@ -47,11 +49,20 @@
                 readOnly: true
             }]);
             var reportChanges = true;
+            
             editor.on('change', function(delta) {
                 if (reportChanges) {
                     ACEView.aceTextDidChange();
                 }
             });
+            
+            
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: false,
+                //maxLines: 10000
+            });
+            
             var Range = require('ace/range').Range;
         </script>
     </body>

@@ -14,6 +14,9 @@
 		36F169ED16B9346C00E8965C /* ACEView_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F169EC16B9346C00E8965C /* ACEView_Tests.m */; };
 		36F169F816B9374200E8965C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F169F616B9374200E8965C /* MainMenu.xib */; };
 		36F169F916B9375D00E8965C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F169F616B9374200E8965C /* MainMenu.xib */; };
+		3D29A4B21A4EDEB000D1EB55 /* ext-language_tools.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D29A4B11A4EDEB000D1EB55 /* ext-language_tools.js */; };
+		3DE08D3C1A49D4AF0058EABA /* ACEToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE08D3B1A49D4AF0058EABA /* ACEToken.m */; };
+		3DE08D3F1A49D4DC0058EABA /* ACEToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DE08D3E1A49D4DC0058EABA /* ACEToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		400DB09819D60B90003FFD07 /* ACEKeyboardHandlerNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 400DB09719D60B90003FFD07 /* ACEKeyboardHandlerNames.m */; };
 		400DB09919D60E8F003FFD07 /* ACEKeyboardHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = 400DB09519D60A38003FFD07 /* ACEKeyboardHandlers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		400DB09A19D60E94003FFD07 /* ACEKeyboardHandlerNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 400DB09619D60ADC003FFD07 /* ACEKeyboardHandlerNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -236,6 +239,9 @@
 		36F169EC16B9346C00E8965C /* ACEView_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEView_Tests.m; sourceTree = "<group>"; };
 		36F169EE16B9346C00E8965C /* ACEView Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACEView Tests-Prefix.pch"; sourceTree = "<group>"; };
 		36F169F716B9374200E8965C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3D29A4B11A4EDEB000D1EB55 /* ext-language_tools.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "ext-language_tools.js"; path = "ACEView/Dependencies/ace/src/ext-language_tools.js"; sourceTree = SOURCE_ROOT; };
+		3DE08D3B1A49D4AF0058EABA /* ACEToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACEToken.m; path = Source/Utilities/ACEToken.m; sourceTree = "<group>"; };
+		3DE08D3E1A49D4DC0058EABA /* ACEToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACEToken.h; path = Source/Utilities/Headers/ACEToken.h; sourceTree = "<group>"; };
 		400DB09519D60A38003FFD07 /* ACEKeyboardHandlers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACEKeyboardHandlers.h; path = Source/Utilities/Headers/ACEKeyboardHandlers.h; sourceTree = "<group>"; };
 		400DB09619D60ADC003FFD07 /* ACEKeyboardHandlerNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACEKeyboardHandlerNames.h; path = Source/Utilities/Headers/ACEKeyboardHandlerNames.h; sourceTree = "<group>"; };
 		400DB09719D60B90003FFD07 /* ACEKeyboardHandlerNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACEKeyboardHandlerNames.m; path = Source/Utilities/ACEKeyboardHandlerNames.m; sourceTree = "<group>"; };
@@ -254,7 +260,7 @@
 		7C8A729215EA0769007E5EB8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7C8A729315EA0769007E5EB8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C8A729415EA0769007E5EB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7C8A72E015EA0F0E007E5EB8 /* ACE View Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "ACE View Example.app"; path = ACEVIewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C8A72E015EA0F0E007E5EB8 /* ACEVIewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACEVIewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8A72E515EA0F0E007E5EB8 /* ACE View Example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ACE View Example-Info.plist"; sourceTree = "<group>"; };
 		7C8A72E715EA0F0E007E5EB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C8A72E915EA0F0E007E5EB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -832,7 +838,7 @@
 			isa = PBXGroup;
 			children = (
 				7C8A728C15EA0769007E5EB8 /* ACEView.framework */,
-				7C8A72E015EA0F0E007E5EB8 /* ACE View Example.app */,
+				7C8A72E015EA0F0E007E5EB8 /* ACEVIewExample.app */,
 				36F169E216B9346C00E8965C /* ACEViewTests.octest */,
 			);
 			name = Products;
@@ -1270,6 +1276,7 @@
 		7C9B6602166AF17B00A24CB7 /* src-noconflict */ = {
 			isa = PBXGroup;
 			children = (
+				3D29A4B11A4EDEB000D1EB55 /* ext-language_tools.js */,
 				7C9B6603166AF17B00A24CB7 /* ace.js */,
 				7C9B6604166AF17B00A24CB7 /* ext-static_highlight.js */,
 				7C9B6605166AF17B00A24CB7 /* ext-textarea.js */,
@@ -1486,6 +1493,7 @@
 				7C86C823166B47AF00AE3A57 /* ACEModeNames.m */,
 				7C86C82A166B507A00AE3A57 /* ACEThemeNames.m */,
 				400DB09719D60B90003FFD07 /* ACEKeyboardHandlerNames.m */,
+				3DE08D3B1A49D4AF0058EABA /* ACEToken.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1510,6 +1518,7 @@
 				7C08C0811672FD1B000D4A97 /* ACEStringFromBool.h */,
 				400DB09519D60A38003FFD07 /* ACEKeyboardHandlers.h */,
 				400DB09619D60ADC003FFD07 /* ACEKeyboardHandlerNames.h */,
+				3DE08D3E1A49D4DC0058EABA /* ACEToken.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -1574,6 +1583,7 @@
 				7C9B672B166B117200A24CB7 /* ACEModeNames.h in Headers */,
 				7C86C827166B4FD000AE3A57 /* ACEThemes.h in Headers */,
 				7C86C829166B506D00AE3A57 /* ACEThemeNames.h in Headers */,
+				3DE08D3F1A49D4DC0058EABA /* ACEToken.h in Headers */,
 				400DB09919D60E8F003FFD07 /* ACEKeyboardHandlers.h in Headers */,
 				400DB09A19D60E94003FFD07 /* ACEKeyboardHandlerNames.h in Headers */,
 				7C9B66C5166AF4E900A24CB7 /* ACELogger.h in Headers */,
@@ -1604,7 +1614,7 @@
 			name = ACEViewTests;
 			productName = "ACEView Tests";
 			productReference = 36F169E216B9346C00E8965C /* ACEViewTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		7C8A728B15EA0769007E5EB8 /* ACEView */ = {
 			isa = PBXNativeTarget;
@@ -1639,7 +1649,7 @@
 			);
 			name = ACEVIewExample;
 			productName = "ACE View Example";
-			productReference = 7C8A72E015EA0F0E007E5EB8 /* ACE View Example.app */;
+			productReference = 7C8A72E015EA0F0E007E5EB8 /* ACEVIewExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1648,7 +1658,8 @@
 		7C8A728215EA0769007E5EB8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastTestingUpgradeCheck = 0610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Code of Interest";
 			};
 			buildConfigurationList = 7C8A728515EA0769007E5EB8 /* Build configuration list for PBXProject "ACEView" */;
@@ -1684,6 +1695,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D29A4B21A4EDEB000D1EB55 /* ext-language_tools.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,6 +1748,7 @@
 				7C86C852166F4A0E00AE3A57 /* NSString+EscapeForJavaScript.m in Sources */,
 				400DB09819D60B90003FFD07 /* ACEKeyboardHandlerNames.m in Sources */,
 				7C08C07C1672ED23000D4A97 /* NSInvocation+MainThread.m in Sources */,
+				3DE08D3C1A49D4AF0058EABA /* ACEToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1846,7 +1859,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1874,7 +1886,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1894,7 +1905,6 @@
 		7C8A72A215EA0769007E5EB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1915,7 +1925,6 @@
 		7C8A72A315EA0769007E5EB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

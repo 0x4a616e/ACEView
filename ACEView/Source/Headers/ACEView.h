@@ -56,6 +56,8 @@ extern NSString *const ACETextDidEndEditingNotification;
  */
 @property(readonly) NSRange firstSelectedRange;
 
+@property(readonly) WebView *webView;
+
 #pragma mark - ACEView interaction
 /**---------------------------------------------------------------------------------------
  * @name Instance Methods
@@ -122,6 +124,19 @@ extern NSString *const ACETextDidEndEditingNotification;
  @see setWrapLimitRange:
  */
 - (void) setUseSoftWrap:(BOOL)wrap;
+
+- (void) setOption:(NSString*) key stringValue:(NSString*)value;
+
+- (void) setOption:(NSString*) key integerValue:(NSInteger)value;
+
+- (void) setOption:(NSString*) key boolValue:(BOOL)value;
+
+- (void) setNewLineMode:(NSString*)mode;
+
+- (void) setUseSoftTabs:(BOOL)tabs;
+
+- (void) setTabSize:(NSInteger)size;
+
 /**  Sets the boundaries of wrap.
 
  Uses [editor.getSession().setWrapLimitRange()](http://ace.ajax.org/#EditSession.setWrapLimitRange).

@@ -48,7 +48,7 @@ static NSArray *allowedSelectorNamesForJavaScript;
 #pragma mark - ACEView implementation
 @implementation ACEView
 
-@synthesize firstSelectedRange, delegate;
+@synthesize firstSelectedRange, delegate, webView;
 
 #pragma mark - Internal
 - (id) initWithFrame:(NSRect)frame {
@@ -124,7 +124,7 @@ static NSArray *allowedSelectorNamesForJavaScript;
     [textFinder performAction:[sender tag]];
 }
 - (void) scrollRangeToVisible:(NSRange)range {
-    firstSelectedRange = range;
+    firstSelectedRange = range;    
     [self executeScriptWhenLoaded:[NSString stringWithFormat:
                                    @"editor.session.selection.clearSelection();"
                                    @"editor.session.selection.setRange(new Range(%@));"
@@ -218,6 +218,7 @@ static NSArray *allowedSelectorNamesForJavaScript;
 - (NSString *) string {
     return [self stringByEvaluatingJavaScriptOnMainThreadFromString:@"editor.getValue();"];
 }
+
 - (void) setString:(id)string {
     [self executeScriptsWhenLoaded:@[
         @"reportChanges = false;",
@@ -234,9 +235,17 @@ static NSArray *allowedSelectorNamesForJavaScript;
 }
 
 - (NSUInteger) getLength {
-    return [self stringByEvaluatingJavaScriptOnMainThreadFromString:@"editor.session.getLength() + \"\""].integerValue;
+    return [self stringByEvaluatingJavaScriptOnMainThreadFromString:@"editor.getSession().getLength() + \"\""].integerValue;
 }
-
+- (void) setOption:(NSString*) key stringValue:(NSString*)value {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setOption(\"%@\", \"%@\");", key, value]];
+}
+- (void) setOption:(NSString*) key integerValue:(NSInteger)value {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setOption(\"%@\", %ld);", key, (long)value]];
+}
+- (void) setOption:(NSString*) key boolValue:(BOOL)value {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setOption(\"%@\", \"%@\");", key, ACEStringFromBool(value)]];
+}
 - (void) setMode:(ACEMode)mode {
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setMode(\"ace/mode/%@\");", [ACEModeNames nameForMode:mode]]];
 }
@@ -253,6 +262,15 @@ static NSArray *allowedSelectorNamesForJavaScript;
 - (void) setWrapLimitRange:(NSRange)range {
     [self setUseSoftWrap:YES];
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setWrapLimitRange(%ld, %ld);", range.location, range.length]];
+}
+- (void) setNewLineMode:(NSString*)mode {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setNewLineMode(%@);", mode]];
+}
+- (void) setUseSoftTabs:(BOOL)tabs {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setUseSoftTabs(%@);", ACEStringFromBool(tabs)]];
+}
+- (void) setTabSize:(NSInteger)size {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setTabSize(%ld);", (long)size]];
 }
 - (void) setShowInvisibles:(BOOL)show {
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setShowInvisibles(%@);", ACEStringFromBool(show)]];

@@ -45,4 +45,6 @@
  */
 + (NSString *) humanNameForTheme:(ACETheme)theme;
 
++ (BOOL) isDarkTheme:(ACETheme)theme;
+
 @end

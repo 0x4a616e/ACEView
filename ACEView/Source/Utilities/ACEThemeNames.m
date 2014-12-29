@@ -86,4 +86,23 @@ NSString *const _ACEThemeNamesHuman[ACEThemeCount] = {
     return _ACEThemeNamesHuman[theme];
 }
 
++ (BOOL) isDarkTheme:(ACETheme)theme {
+    switch (theme) {
+        case ACEThemeChrome:
+        case ACEThemeClouds:
+        case ACEThemeCrimsonEditor:
+        case ACEThemeDawn:
+        case ACEThemeDreamweaver:
+        case ACEThemeEclipse:
+        case ACEThemeGithub:
+        case ACEThemeSolarizedLight:
+        case ACEThemeTextmate:
+        case ACEThemeTomorrow:
+        case ACEThemeXcode:
+            return false;
+        default:
+            return true;
+    }
+}
+
 @end
