@@ -7,102 +7,61 @@
 //
 
 #import "ACEThemeNames.h"
-
-NSString *const _ACEThemeNames[ACEThemeCount] = {
-    [ACEThemeAmbiance]				 = @"ambiance",
-    [ACEThemeChrome]				 = @"chrome",
-    [ACEThemeClouds]				 = @"clouds",
-    [ACEThemeCloudsMidnight]		 = @"clouds_midnight",
-    [ACEThemeCobalt]				 = @"cobalt",
-    [ACEThemeCrimsonEditor]			 = @"crimson_editor",
-    [ACEThemeDawn]                   = @"dawn",
-    [ACEThemeDreamweaver]			 = @"dreamweaver",
-    [ACEThemeEclipse]				 = @"eclipse",
-    [ACEThemeGithub]				 = @"github",
-    [ACEThemeIdleFingers]			 = @"idle_fingers",
-    [ACEThemeKr]                     = @"kr",
-    [ACEThemeMerbivore]				 = @"merbivore",
-    [ACEThemeMerbivoreSoft]			 = @"merbivore_soft",
-    [ACEThemeMonoIndustrial]		 = @"mono_industrial",
-    [ACEThemeMonokai]				 = @"monokai",
-    [ACEThemePastelOnDark]			 = @"pastel_on_dark",
-    [ACEThemeSolarizedDark]			 = @"solarized_dark",
-    [ACEThemeSolarizedLight]		 = @"solarized_light",
-    [ACEThemeTextmate]				 = @"textmate",
-    [ACEThemeTomorrow]				 = @"tomorrow",
-    [ACEThemeTomorrowNight]			 = @"tomorrow_night",
-    [ACEThemeTomorrowNightBlue]		 = @"tomorrow_night_blue",
-    [ACEThemeTomorrowNightBright]	 = @"tomorrow_night_bright",
-    [ACEThemeTomorrowNightEighties]	 = @"tomorrow_night_eighties",
-    [ACEThemeTwilight]				 = @"twilight",
-    [ACEThemeVibrantInk]			 = @"vibrant_ink",
-    [ACEThemeXcode]                  = @"xcode"
-};
-
-NSString *const _ACEThemeNamesHuman[ACEThemeCount] = {
-    [ACEThemeAmbiance]				 = @"Ambiance",
-    [ACEThemeChrome]				 = @"Chrome",
-    [ACEThemeClouds]				 = @"Clouds",
-    [ACEThemeCloudsMidnight]		 = @"Clouds Midnight",
-    [ACEThemeCobalt]				 = @"Cobalt",
-    [ACEThemeCrimsonEditor]			 = @"Crimson Editor",
-    [ACEThemeDawn]                   = @"Dawn",
-    [ACEThemeDreamweaver]			 = @"Dreamweaver",
-    [ACEThemeEclipse]				 = @"Eclipse",
-    [ACEThemeGithub]				 = @"Github",
-    [ACEThemeIdleFingers]			 = @"Idle Fingers",
-    [ACEThemeKr]                     = @"KR",
-    [ACEThemeMerbivore]				 = @"Merbivore",
-    [ACEThemeMerbivoreSoft]			 = @"Merbivore Soft",
-    [ACEThemeMonoIndustrial]		 = @"Mono Industrial",
-    [ACEThemeMonokai]				 = @"Monokai",
-    [ACEThemePastelOnDark]			 = @"Pastel on Dark",
-    [ACEThemeSolarizedDark]			 = @"Solarized Dark",
-    [ACEThemeSolarizedLight]		 = @"Solarized Light",
-    [ACEThemeTextmate]				 = @"Textmate",
-    [ACEThemeTomorrow]				 = @"Tomorrow",
-    [ACEThemeTomorrowNight]			 = @"Tomorrow Night",
-    [ACEThemeTomorrowNightBlue]		 = @"Tomorrow Night Blue",
-    [ACEThemeTomorrowNightBright]	 = @"Tomorrow Night Bright",
-    [ACEThemeTomorrowNightEighties]	 = @"Tomorrow Night Eighties",
-    [ACEThemeTwilight]				 = @"Twilight",
-    [ACEThemeVibrantInk]			 = @"Vibrant Ink",
-    [ACEThemeXcode]                  = @"Xcode"
-};
+#import "Headers/ACEResourceFinder.h"
 
 @implementation ACEThemeNames
 
 + (NSArray *) themeNames {
-    return [NSArray arrayWithObjects:_ACEThemeNames count:ACEThemeCount];
+    return [[[ACEResourceFinder defaultResources] themes] allValues];
 }
+
 + (NSArray *) humanThemeNames {
-    return [NSArray arrayWithObjects:_ACEThemeNamesHuman count:ACEThemeCount];
+    return [[[ACEResourceFinder defaultResources] themes] keysSortedByValueUsingSelector:@selector(compare:)];
 }
 
-+ (NSString *) nameForTheme:(ACETheme)theme  {
-    return _ACEThemeNames[theme];
-}
-+ (NSString *) humanNameForTheme:(ACETheme)theme {
-    return _ACEThemeNamesHuman[theme];
++ (NSString *) humanNameForTheme:(NSString*) theme {
+    return [[ACEResourceFinder defaultResources] humanize:theme];
 }
 
-+ (BOOL) isDarkTheme:(ACETheme)theme {
-    switch (theme) {
-        case ACEThemeChrome:
-        case ACEThemeClouds:
-        case ACEThemeCrimsonEditor:
-        case ACEThemeDawn:
-        case ACEThemeDreamweaver:
-        case ACEThemeEclipse:
-        case ACEThemeGithub:
-        case ACEThemeSolarizedLight:
-        case ACEThemeTextmate:
-        case ACEThemeTomorrow:
-        case ACEThemeXcode:
-            return false;
-        default:
-            return true;
++ (NSInteger) getIndexByName:(NSString*) name {
+    NSArray* sortedKeys = [self humanThemeNames];
+    NSDictionary* themes = [[ACEResourceFinder defaultResources] themes];
+    
+    for (NSInteger i = 0; i < [sortedKeys count]; i++) {
+        NSString* key = [sortedKeys objectAtIndex:i];
+        if ([[themes objectForKey:key] isEqualToString:name]) {
+            return i;
+        }
     }
+    
+    return -1;
+}
+
++ (NSString*) getNameByIndex:(NSInteger)index {
+    NSString* humanName = [[self humanThemeNames] objectAtIndex:index];
+    return [[[ACEResourceFinder defaultResources] themes] objectForKey:humanName];
+}
+
++ (BOOL) isDarkTheme:(NSString*)name {
+    return [name isEqualToString:@"ambiance"] ||
+            [name isEqualToString:@"chaos"] ||
+            [name isEqualToString:@"clouds_midnight"] ||
+            [name isEqualToString:@"cobalt"] ||
+            [name isEqualToString:@"idle_fingers"] ||
+            [name isEqualToString:@"kr_theme"] ||
+            [name isEqualToString:@"merbivore"] ||
+            [name isEqualToString:@"merbivore_soft"] ||
+            [name isEqualToString:@"mono_industrial"] ||
+            [name isEqualToString:@"monokai"] ||
+            [name isEqualToString:@"pastel_on_dark"] ||
+            [name isEqualToString:@"solarized_dark"] ||
+            [name isEqualToString:@"terminal"] ||
+            [name isEqualToString:@"tomorrow_night"] ||
+            [name isEqualToString:@"tomorrow_night_blue"] ||
+            [name isEqualToString:@"tomorrow_night_bright"] ||
+            [name isEqualToString:@"tomorrow_night_eighties"] ||
+            [name isEqualToString:@"twilight"] || 
+            [name isEqualToString:@"vibrant_ink"];
 }
 
 @end

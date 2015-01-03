@@ -5,7 +5,6 @@
 //  Created by Michael Robinson on 2/12/12.
 //  Copyright (c) 2012 Code of Interest. All rights reserved.
 //
-#import <ACEView/ACEThemes.h>
 
 /** Class providing methods to:
 
@@ -37,14 +36,18 @@
  @param theme The ACETheme constant to be converted.
  @return The ACE theme name corresponding to the given ACETheme constant.
  */
-+ (NSString *) nameForTheme:(ACETheme)theme;
+//+ (NSString *) nameForTheme:(ACETheme)theme;
 /** Return the human-readable ACE theme name for a given ACETheme constant.
 
  @param theme The ACETheme constant to be converted.
  @return The human-readable ACE theme name corresponding to the given ACETheme constant.
  */
-+ (NSString *) humanNameForTheme:(ACETheme)theme;
++ (NSString *) humanNameForTheme:(NSString*) theme;
 
-+ (BOOL) isDarkTheme:(ACETheme)theme;
++ (NSInteger) getIndexByName:(NSString*) name;
+
++ (NSString*) getNameByIndex:(NSInteger)index;
+
++ (BOOL) isDarkTheme:(NSString*)name;
 
 @end

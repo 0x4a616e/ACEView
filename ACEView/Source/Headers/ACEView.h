@@ -9,7 +9,6 @@
 #import <WebKit/WebKit.h>
 
 #import <ACEView/ACEModes.h>
-#import <ACEView/ACEThemes.h>
 #import <ACEView/ACEKeyboardHandlers.h>
 
 extern NSString *const ACETextDidEndEditingNotification;
@@ -92,7 +91,7 @@ extern NSString *const ACETextDidEndEditingNotification;
  @param mode The mode to set.
  @see ACEMode
  */
-- (void) setMode:(ACEMode)mode;
+- (void) setMode:(NSString*)mode;
 /** Set the theme.
 
  Uses [editor.getSession().setTheme()](http://ace.ajax.org/#Editor.setTheme).
@@ -100,7 +99,7 @@ extern NSString *const ACETextDidEndEditingNotification;
  @param theme The theme to set.
  @see ACETheme
  */
-- (void) setTheme:(ACETheme)theme;
+- (void) setTheme:(NSString*)theme;
 
 /** Turn wrapping behaviour on or off.
 

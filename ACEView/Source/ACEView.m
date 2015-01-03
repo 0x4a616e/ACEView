@@ -246,11 +246,11 @@ static NSArray *allowedSelectorNamesForJavaScript;
 - (void) setOption:(NSString*) key boolValue:(BOOL)value {
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setOption(\"%@\", \"%@\");", key, ACEStringFromBool(value)]];
 }
-- (void) setMode:(ACEMode)mode {
-    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setMode(\"ace/mode/%@\");", [ACEModeNames nameForMode:mode]]];
+- (void) setMode:(NSString*)mode {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setMode(\"ace/mode/%@\");", mode]];
 }
-- (void) setTheme:(ACETheme)theme {
-    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setTheme(\"ace/theme/%@\");", [ACEThemeNames nameForTheme:theme]]];
+- (void) setTheme:(NSString*)theme {
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.setTheme(\"ace/theme/%@\");", theme]];
 }
 
 - (void) setWrappingBehavioursEnabled:(BOOL)wrap {
