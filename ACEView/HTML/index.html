@@ -24,31 +24,6 @@
 
         <script>
             var editor = ace.edit("editor");
-            
-            editor.commands.addCommands([{
-                name: "ACEFind",
-                bindKey: {
-                    win: "Ctrl-F",
-                    mac: "Command-F"
-                },
-                exec: function(editor, line) {
-                    ACEView.showFindInterface();
-                    return false;
-                },
-                readOnly: true
-            }]);
-            editor.commands.addCommands([{
-                name: "ACEReplace",
-                bindKey: {
-                    win: "Ctrl-Shift-F",
-                    mac: "Command-Shift-F"
-                },
-                exec: function(editor, line) {
-                    ACEView.showReplaceInterface();
-                    return false;
-                },
-                readOnly: true
-            }]);
             var reportChanges = true;
             
             editor.on('change', function(delta) {
@@ -65,6 +40,7 @@
             
             var Range = require('ace/range').Range;
             var Renderer = require('ace/virtual_renderer').VirtualRenderer;
+            var Search = require('ace/search').Search;
         </script>
     </body>
 </html>
