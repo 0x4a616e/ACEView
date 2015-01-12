@@ -14,6 +14,9 @@
 
 @implementation ACEViewAppDelegate
 
+#define ACE_JAVASCRIPT_DIRECTORY @"___ACE_VIEW_JAVASCRIPT_DIRECTORY___"
+
+
 @synthesize aceView;
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -23,30 +26,38 @@
 //    [aceView setString:[NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://github.com/faceleg/ACEView"] encoding:NSUTF8StringEncoding
 //                                                   error:nil]];
     [aceView setDelegate:self];
-    [aceView setMode:ACEModeHTML];
-    [aceView setTheme:ACEThemeXcode];
     [aceView setKeyboardHandler:ACEKeyboardHandlerAce];
     [aceView setShowPrintMargin:NO];
     [aceView setShowInvisibles:YES];
 }
+
+- (NSString *) aceJavascriptDirectoryPath{
+    // Unable to use pretty resource paths with CocoaPods
+    NSBundle *bundle = [NSBundle bundleForClass:[ACEView class]];
+    return [[bundle pathForResource:@"ace" ofType:@"js"] stringByDeletingLastPathComponent];
+}
+
+- (NSString *) htmlPageFilePath{
+    // Unable to use pretty resource paths with CocoaPods
+    NSBundle *bundle = [NSBundle bundleForClass:[ACEView class]];
+    return [bundle pathForResource:@"index" ofType:@"html"];
+}
+
 
 - (void) awakeFromNib {
     [syntaxMode addItemsWithTitles:[ACEModeNames humanModeNames]];
     [syntaxMode selectItemAtIndex:ACEModeHTML];
     
     [theme addItemsWithTitles:[ACEThemeNames humanThemeNames]];
-    [theme selectItemAtIndex:ACEThemeXcode];
 
     [keyboardHandler addItemsWithTitles:[ACEKeyboardHandlerNames humanKeyboardHandlerNames]];
     [keyboardHandler selectItemAtIndex:ACEKeyboardHandlerAce];
 }
 
 - (IBAction) syntaxModeChanged:(id)sender {
-    [aceView setMode:[syntaxMode indexOfSelectedItem]];
 }
 
 - (IBAction) themeChanged:(id)sender {
-    [aceView setTheme:[theme indexOfSelectedItem]];
 }
 
 - (IBAction) keyboardHandlerChanged:(id)sender {

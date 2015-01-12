@@ -80,7 +80,7 @@ static NSArray *allowedSelectorNamesForJavaScript;
     
     NSString *html = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     html = [html stringByReplacingOccurrencesOfString:ACE_JAVASCRIPT_DIRECTORY withString:javascriptDirectory];
-    
+
     [[webView mainFrame] loadHTMLString:html baseURL:[bundle bundleURL]];
 }
 
@@ -260,6 +260,10 @@ static NSArray *allowedSelectorNamesForJavaScript;
 - (void) replaceAll:(NSString*) replacement options:(NSDictionary*)options {
     NSString* stringOptions = [self getSearchOptions:options];
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.replaceAll(\"%@\", %@);", replacement, stringOptions]];
+}
+
+- (NSString*) getModeForPath:(NSString*)path {
+    return [self stringByEvaluatingJavaScriptOnMainThreadFromString:[NSString stringWithFormat:@"modelist.getModeForPath(\"%@\").name", path]];
 }
 
 - (NSUInteger) getLength {

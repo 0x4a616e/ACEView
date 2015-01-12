@@ -73,6 +73,8 @@ extern NSString *const ACETextDidEndEditingNotification;
 
 - (NSString*) getLine:(NSInteger)line;
 
+- (NSString*) getModeForPath:(NSString*)path;
+
 /** Retrieve the content of the underlying ACE Editor.
 
  Uses [editor.getValue()](http://ace.ajax.org/#Editor.getValue).

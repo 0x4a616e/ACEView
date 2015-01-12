@@ -58,7 +58,8 @@
 }
 
 -(NSArray*) loadResources {
-    NSArray* paths = [[NSBundle bundleWithIdentifier:@"com.codeofinterest.ACEView"] pathsForResourcesOfType:@".js" inDirectory:@"Resources"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSArray* paths = [bundle pathsForResourcesOfType:@".js" inDirectory:@"Resources"];
     
     NSMutableArray *resultBuilder = [NSMutableArray arrayWithCapacity:[paths count]];
     for (NSUInteger i = 0; i < [paths count]; i++) {
@@ -75,7 +76,8 @@
                            @"csharp": @"C#",
                            @"golang": @"Go",
                            @"objectivec": @"Objective-C",
-                           @"ftl": @"FreeMarker"
+                           @"ftl": @"FreeMarker",
+                           @"sh": @"Shell"
                            };
     
     return [overrides copy];

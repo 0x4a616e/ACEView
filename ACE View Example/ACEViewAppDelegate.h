@@ -19,6 +19,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic) IBOutlet ACEView *aceView;
+@property (weak) IBOutlet WebView *webView;
 
 - (IBAction) syntaxModeChanged:(id)sender;
 - (IBAction) themeChanged:(id)sender;

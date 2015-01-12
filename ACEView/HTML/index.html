@@ -21,11 +21,40 @@
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/keybinding-vim.js" type="text/javascript" charset="utf-8"></script>
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/keybinding-emacs.js" type="text/javascript" charset="utf-8"></script>
         <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+        <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/ext-modelist.js" type="text/javascript" charset="utf-8"></script>
+        <script src="___ACE_VIEW_JAVASCRIPT_DIRECTORY___/ext-themelist.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
             var editor = ace.edit("editor");
-            var reportChanges = true;
+            require('ace/ext/language_tools');
             
+            editor.commands.addCommands([{
+                name: "ACEFind",
+                bindKey: {
+                    win: "Ctrl-F",
+                    mac: "Command-F"
+                },
+                exec: function(editor, line) {
+                    ACEView.showFindInterface();
+                    return false;
+                },
+                readOnly: true
+            }]);
+            editor.commands.addCommands([{
+                name: "ACEReplace",
+                bindKey: {
+                    win: "Ctrl-Shift-F",
+                    mac: "Command-Shift-F"
+                },
+                exec: function(editor, line) {
+                    ACEView.showReplaceInterface();
+                    return false;
+                },
+                readOnly: true
+            }]);
+            editor.commands.removeCommand('showSettingsMenu')
+            
+            var reportChanges = true;
             editor.on('change', function(delta) {
                 if (reportChanges) {
                     ACEView.aceTextDidChange();
@@ -35,12 +64,12 @@
             editor.setOptions({
                 enableBasicAutocompletion: true,
                 enableLiveAutocompletion: false,
-                //maxLines: 10000
             });
             
             var Range = require('ace/range').Range;
-            var Renderer = require('ace/virtual_renderer').VirtualRenderer;
             var Search = require('ace/search').Search;
+            var modelist = require('ace/ext/modelist');
+            var themelist = require('ace/ext/themelist');
         </script>
     </body>
 </html>
