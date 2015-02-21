@@ -231,6 +231,10 @@ static NSArray *allowedSelectorNamesForJavaScript;
     ]];
 }
 
+- (void) focus {
+    [self executeScriptWhenLoaded:@"focusEditor();"];
+}
+
 - (NSArray *) token:(NSUInteger)row {
     return [ACEToken fromString:[self stringByEvaluatingJavaScriptOnMainThreadFromString:[NSString stringWithFormat:@"JSON.stringify(editor.session.getTokens(%ld));", row]]];
 }
@@ -296,7 +300,10 @@ static NSArray *allowedSelectorNamesForJavaScript;
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setWrapLimitRange(%ld, %ld);", range.location, range.length]];
 }
 - (void) setNewLineMode:(NSString*)mode {
-    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setNewLineMode(%@);", mode]];
+    [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setNewLineMode(\"%@\");", mode]];
+}
+- (NSString*) getNewLineMode {
+    return [self stringByEvaluatingJavaScriptOnMainThreadFromString:@"editor.getSession().getNewLineMode();"];
 }
 - (void) setUseSoftTabs:(BOOL)tabs {
     [self executeScriptWhenLoaded:[NSString stringWithFormat:@"editor.getSession().setUseSoftTabs(%@);", ACEStringFromBool(tabs)]];

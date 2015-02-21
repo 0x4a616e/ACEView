@@ -63,6 +63,8 @@ extern NSString *const ACETextDidEndEditingNotification;
  *  ---------------------------------------------------------------------------------------
  */
 
+- (void) focus;
+
 - (NSArray *) token:(NSUInteger) row;
 
 - (NSArray*) findAll:(NSDictionary*) options;
@@ -137,6 +139,8 @@ extern NSString *const ACETextDidEndEditingNotification;
 - (void) setOption:(NSString*) key integerValue:(NSInteger)value;
 
 - (void) setOption:(NSString*) key boolValue:(BOOL)value;
+
+- (NSString*) getNewLineMode;
 
 - (void) setNewLineMode:(NSString*)mode;
 
